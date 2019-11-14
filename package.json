@@ -1,5 +1,5 @@
 {
-  "name": "@3yaa3yaa/rubyhtml",
+  "name": "@3yaa3yaa/markdown-converter",
   "version": "0.0.1",
   "description": "",
   "main": "dist/bundle.js",
@@ -14,10 +14,15 @@
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
     "@babel/preset-env": "^7.5.5",
-    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "24.9.0",
+    "babel-loader": "^8.0.0",
     "babel-plugin-transform-class-constructor-call": "^6.24.1",
     "jest": "^24.8.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
   },

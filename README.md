@@ -1,3 +1,3 @@
-#RubyHtml
+#MarkDown Converter
 
-Javascript library to add ruby for Japanese
+Javascript library convert markdown text to JSX object.

@@ -3,7 +3,7 @@
     "@babel/preset-env"
   ],
   "plugins": [
-    "transform-class-constructor-call",
-    "add-module-exports"
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-react-jsx"
   ]
 }

@@ -1,17 +1,24 @@
+import React from "react";
 import kuromoji from 'kuromoji'
-import { MarkdownTextBox } from '@3yaa3yaa/markdowntextbox';
+import MarkDownViewer from "./MarkDownViewer";
+
 
 export default class TextToJSX
 {
     constructor(text) {
         this.text=text;
+        this.rubyPattern = /rb\(([^|]+)\)/g
+        this.filledText=this.text.replace(this.rubyPattern,'$1')
     }
 
-    build()
+    GetJSX()
     {
-        let re = new RegExp('/.+(\n|$)','g');
-        let arr = [...this.text.matchAll(re)].map((item)=>item[0]);
-        console.log(arr);
+        return (<MarkDownViewer text={this.filledText} />);
+    }
+
+    FillReadingsFromDictionary()
+    {
+        let arr = [...this.text.matchAll(this.rubyPattern)].map((item)=>item[1]);
         return Promise.all(arr.map((item)=>{
             return this.replaceRuby(item)
                 .then((tokens)=>{
@@ -20,12 +27,12 @@ export default class TextToJSX
                         const current=tokens.reduce(((acc,cur)=>acc+cur.surface_form),'');
                         const tobe=tokens.map((token)=>{
                                 if(token.surface_form.match(/[\u30e0-\u9fcf]/))
-                                    {return '=rb('+ token.surface_form + '|'+ token.reading +")"}
+                                    {return 'rb('+ token.surface_form + '|'+ token.reading +")"}
                                 else
                                     {return token.surface_form}
                                 })
                             .reduce(((acc,cur)=>acc+cur),'');
-                        this.text=this.text.replace(current,tobe);
+                        this.filledText=this.filledText.replace(current,tobe);
                         resolve();
                     })
                 });
