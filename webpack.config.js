@@ -1,6 +1,6 @@
 module.exports = [{ 
   entry: {
-    index : __dirname + "/src/Builder.js"},
+    index : __dirname + "/src/TextToJSX.js"},
   output: {
     path: __dirname + "/dist/",
     filename: "bundle.js",
