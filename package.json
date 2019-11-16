@@ -1,6 +1,6 @@
 {
   "name": "@3yaa3yaa/markdown-converter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "dist/bundle.js",
   "scripts": {
@@ -31,7 +31,9 @@
     "babel-preset-es2015": "^6.24.1",
     "kuromoji": "^0.1.2",
     "react": "^16.11.0",
-    "@3yaa3yaa/markdowntextbox": "^0.2.1"
+    "@3yaa3yaa/markdowntextbox": "^0.2.1",
+    "treemindmap": "^1.4.5",
+    "gatsby-image": "^2.2.33"
   },
   "peerDependencies": {
     "kuromoji": "^0.1.2"
