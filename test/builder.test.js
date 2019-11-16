@@ -32,6 +32,12 @@ describe('A suite', function() {
         });
     })
 
+    // it('should build a JSX properly', function(){
+    //     let ttj=new TextToJSX("rb(親譲りの無鉄砲で子どもの時から損ばかりしている)");
+    //     const wrapper = render(ttj.GetFilledJSX());
+    //     expect(wrapper.find('.description').text()).toBe("親譲りオヤユズリの無鉄砲ムテッポウで子どもコドモの時トキから損ソンばかりしている");
+    // })
+
 });
 
 

@@ -12,13 +12,14 @@ export default class MarkDownViewer extends Component {
     {
         let original=(data)=>{return data.split('|')[0]}
         let reading=(data)=>{return data.split('|')[1]}
-        let out = new Reserved('rb(',')',(data)=>{return (<div><ruby>{original(data)}<rt>{reading(data)}</rt></ruby></div>)})
+        let out = new Reserved('rb(',')',(data,index)=>{return (<div key={index}><ruby>{original(data)}<rt>{reading(data)}</rt></ruby></div>)})
         return [out];
     }
 
     render() {
         return (<MarkdownTextBox value={this.text}
                                  reservedItems={this.getReservedItems()}
+                                 descriptionStyle={{maxWidth:'100%', width:'100%'}}
                 />);
     }
 }

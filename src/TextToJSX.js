@@ -16,6 +16,12 @@ export default class TextToJSX
         return (<MarkDownViewer text={this.filledText} />);
     }
 
+    async GetFilledJSX() //under development
+    {
+        await this.FillReadingsFromDictionary()
+        return this.GetJSX()
+    }
+
     FillReadingsFromDictionary()
     {
         let arr = [...this.text.matchAll(this.rubyPattern)].map((item)=>item[1]);
@@ -55,7 +61,7 @@ export default class TextToJSX
                     }
                 )
             }
-        );
+        )
     }
 
 }
