@@ -14,10 +14,17 @@ describe('A suite', function() {
 
     it('should return a JSX properly', function(){
         let ttj=new TextToJSX("rb(親譲り|オヤユズリ)");
-        console.log(mount(ttj.GetJSX()).debug());
         const wrapper = render(ttj.GetJSX());
         expect(wrapper.find('.description').text()).toBe("親譲りオヤユズリ");
     })
+
+    it('should return a link properly', function(){
+        let ttj=new TextToJSX("https://google.com");
+        console.log(mount(ttj.GetJSX()).debug());
+        const wrapper = render(ttj.GetJSX());
+        expect(wrapper.find('.description').text()).toBe("google.com");
+    })
+
 
 
     it('should build a JSX properly', function(){
