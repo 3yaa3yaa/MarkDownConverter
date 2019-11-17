@@ -16,11 +16,11 @@ export default class TextToJSX
         return (<MarkDownViewer text={this.filledText} />);
     }
 
-    async GetFilledJSX() //under development
-    {
-        await this.FillReadingsFromDictionary()
-        return this.GetJSX()
-    }
+    // async GetFilledJSX() //under development
+    // {
+    //     await this.FillReadingsFromDictionary()
+    //     return this.GetJSX()
+    // }
 
     FillReadingsFromDictionary()
     {
