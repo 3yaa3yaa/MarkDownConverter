@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Reserved, MarkdownTextBox } from '@3yaa3yaa/markdowntextbox';
-//import { Map}  from 'treemindmap'
+import { Map}  from 'treemindmap'
 
 export default class MarkDownViewer extends Component {
 
@@ -18,6 +18,7 @@ export default class MarkDownViewer extends Component {
         //out.push(new Reserved('tmm(',')',(data,index)=>{return (<div key={index} style={{position:'relative', display:'block'}}><Map initialState={data}/></div>)}))
         out.push(new Reserved('img(',[')'],(data,index)=>{return (<div key={index}><img src={data} style={{width:'100%'}}/></div>)}))
         out.push(new Reserved('https://',[' ','\n','$'],(data,index)=>{return (<div key={index}><a href={'https://'+ data} style={{display:'inline'}}>{data}</a></div>)}))
+        out.push(new Reserved('map(',[')'],(data,index)=>{return (<div key={index} style={{width:'100%'}}><Map initialState={data} /></div>)}))
 
         return out;
     }

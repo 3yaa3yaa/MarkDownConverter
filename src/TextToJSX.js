@@ -16,10 +16,19 @@ export default class TextToJSX
         return (<MarkDownViewer text={this.filledText} />);
     }
 
-    // async GetFilledJSX() //under development
+    // GetFilledJSX() //under development
     // {
-    //     await this.FillReadingsFromDictionary()
-    //     return this.GetJSX()
+    //     let out=1;
+    //     let called=false;
+    //     this.FillReadingsFromDictionary().then(()=>{out= this.GetJSX(); called=true});
+    //     do
+    //     {
+    //         if(called)
+    //         {
+    //             return out;
+    //         }
+    //         setTimeout(()=>{console.log("waiting..."), 5000});
+    //     }while(true===true);
     // }
 
     FillReadingsFromDictionary()
