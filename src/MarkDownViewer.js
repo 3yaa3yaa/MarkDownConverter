@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { Reserved, MarkdownTextBox } from '@3yaa3yaa/markdowntextbox';
-import { Map}  from 'treemindmap'
+import Img from 'gatsby-image';
+
 
 export default class MarkDownViewer extends Component {
 
     constructor(props) {
         super(props);
         this.text=this.props.text;
+        this.images=this.props.images;
+
+    }
+
+    getImage(filename)
+    {
+        return this.props.images.filter((data)=>{return data.relativePath===filename})[0].childImageSharp.fixed;
     }
 
     getReservedItems()
@@ -15,9 +23,8 @@ export default class MarkDownViewer extends Component {
         let reading=(data)=>{return data.split('|')[1]}
         let out=[]
         out.push(new Reserved('rb(',[')'],(data,index)=>{return (<div key={index} style={{display:'inline'}}><ruby>{original(data)}<rt>{reading(data)}</rt></ruby></div>)}))
-        out.push(new Reserved('img(',[')'],(data,index)=>{return (<div key={index}><img src={data} style={{width:'100%'}}/></div>)}))
+        out.push(new Reserved('img(',[')'],(data,index)=>{return (<div key={index}><Img fixed={this.getImage(data)} style={{width:'100%'}}/></div>)}))
         out.push(new Reserved('https://',[' ','\n','$'],(data,index)=>{return (<div key={index}><a href={'https://'+ data} style={{display:'inline'}}>{data}</a></div>)}))
-        out.push(new Reserved('tmm(',[')'],(data,index)=>{return (<div key={index} style={{width:'100%'}}><Map initialState={data} /></div>)}))
 
         return out;
     }

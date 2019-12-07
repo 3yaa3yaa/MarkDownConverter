@@ -5,15 +5,16 @@ import MarkDownViewer from "./MarkDownViewer";
 
 export default class TextToJSX
 {
-    constructor(text) {
+    constructor(text,images) {
         this.text=text;
+        this.images=images;
         this.rubyPattern = /rb\(([^|]+)\)/g
         this.filledText=this.text.replace(this.rubyPattern,'$1')
     }
 
     GetJSX()
     {
-        return (<MarkDownViewer text={this.filledText} />);
+        return (<MarkDownViewer text={this.filledText} images={this.images}/>);
     }
 
     // GetFilledJSX() //under development
