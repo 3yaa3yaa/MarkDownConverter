@@ -14,7 +14,12 @@ export default class MarkDownViewer extends Component {
 
     getImage(filename)
     {
-        return this.props.images.filter((data)=>{return data.relativePath===filename})[0].childImageSharp.fixed;
+        let filtered=this.props.images.filter((data)=>{return data.node.fixed.originalName===filename});
+        if(filtered.length>0)
+        {
+            return filtered[0].node.fluid;
+        }
+        return "";
     }
 
     getReservedItems()
@@ -23,7 +28,7 @@ export default class MarkDownViewer extends Component {
         let reading=(data)=>{return data.split('|')[1]}
         let out=[]
         out.push(new Reserved('rb(',[')'],(data,index)=>{return (<div key={index} style={{display:'inline'}}><ruby>{original(data)}<rt>{reading(data)}</rt></ruby></div>)}))
-        out.push(new Reserved('img(',[')'],(data,index)=>{return (<div key={index}><Img fixed={this.getImage(data)} style={{width:'100%'}}/></div>)}))
+        out.push(new Reserved('img(',[')'],(data,index)=>{return (<div key={index}><Img fluid={this.getImage(data)} style={{width:'100%'}}/></div>)}))
         out.push(new Reserved('https://',[' ','\n','$'],(data,index)=>{return (<div key={index}><a href={'https://'+ data} style={{display:'inline'}}>{data}</a></div>)}))
 
         return out;
